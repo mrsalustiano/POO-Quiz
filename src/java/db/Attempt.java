@@ -24,7 +24,7 @@ public class Attempt {
     private double result;
     private Date date;
     
-     //MÉTODO PARA REGISTRAR UMA TENTATIVA
+     
     public static ArrayList<Attempt> getAttempts() throws Exception{
         ArrayList<Attempt> list = new ArrayList<>();
         Class.forName("org.sqlite.JDBC");
@@ -43,7 +43,7 @@ public class Attempt {
         return list;
     }
     
-    //CRIANDO METODO PARA CRIAR UMA TENTATIVA
+   
     public static void addAttempts(String name, double result, Date date) throws Exception{
         Class.forName("org.sqlite.JDBC");
         Connection con = DriverManager.getConnection(DbListener.jdbcUrl);
