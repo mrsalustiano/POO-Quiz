@@ -68,23 +68,23 @@ import javax.servlet.ServletContextListener;
                stmt.executeUpdate("INSERT INTO categories(description, answer, answerwrong1, answerwrong2, answerwrong3) "
                     + "VALUES('COVID-19 é a doença infecciosa causada pelo novo coronavírus:', 'SARS-COV-2', 'SARS-COV-1', 'SARS-COV-4', 'SARS-COV-3')");
                 stmt.executeUpdate("INSERT INTO categories(description, answer, answerwrong1, answerwrong2, answerwrong3) "
-                    + "VALUES('Qual a capital do Japão?','Fortaleza','Pequim','Roma','Tóquio')");
+                    + "VALUES('Qual a capital do Japão?','Tóquio','Pequim','Roma','Fortaleza')");
                 stmt.executeUpdate("INSERT INTO categories(description, answer, answerwrong1, answerwrong2, answerwrong3) "
-                    + "VALUES('Presidente dos Estados Unidos?', 'Barack Obama', 'Donald Trump', 'Dilma Roussef', 'Hilary Clynton')");
+                    + "VALUES('Presidente dos Estados Unidos?', 'Donald Trump','Barack Obama','Dilma Roussef', 'Hilary Clynton')");
                 stmt.executeUpdate("INSERT INTO categories(description, answer, answerwrong1, answerwrong2, answerwrong3) "
-                    + "VALUES('Onde foi realizada as Olimpíadas de 2016?', 'Grécia', 'China','Brasil','Inglaterra')");
+                    + "VALUES('Onde foi realizada as Olimpíadas de 2016?', 'Brasil', 'China','Grécia','Inglaterra')");
                 stmt.executeUpdate("INSERT INTO categories(description, answer, answerwrong1, answerwrong2, answerwrong3) "
-                    + "VALUES('Recursão é um método de programação no qual uma função pode chamar:', 'outra função', 'a si mesma', 'função identificada', 'função não identificada')");
+                    + "VALUES('Recursão é um método de programação no qual uma função pode chamar:', 'a si mesma', 'outra função', 'função identificada', 'função não identificada')");
                 stmt.executeUpdate("INSERT INTO categories(description, answer, answerwrong1, answerwrong2, answerwrong3) "
-                    + "VALUES('Quantas vezes o Brasil foi campeão mundial de futebol?', '2', '7', '5', '3')");
+                    + "VALUES('Quantas vezes o Brasil foi campeão mundial de futebol?', '5', '7', '2', '3')");
                 stmt.executeUpdate("INSERT INTO categories(description, answer, answerwrong1, answerwrong2, answerwrong3) "
-                    + "VALUES('Quem foi o criador do Linux?', 'Bill Gattes', 'Steve Jobs', 'Steve Wozniak', 'Linus Torvalds')");          stmt.executeUpdate(SQL);
+                    + "VALUES('Quem foi o criador do Linux?', 'Linus Torvalds', 'Steve Jobs', 'Steve Wozniak', 'Bill Gattes')");         
                 stmt.executeUpdate("INSERT INTO categories(description, answer, answerwrong1, answerwrong2, answerwrong3) "
                     + "VALUES('Qual o significado da palavra Listener?','Ouvinte','Falante','Surdo','Mudo')");
                 stmt.executeUpdate("INSERT INTO categories(description, answer, answerwrong1, answerwrong2, answerwrong3) "
-                    + "VALUES('Qual a data da proclamação da República?', '22 de janeiro', '07 de stembro', '15 de novembro', '12 de outubro')");
+                    + "VALUES('Qual a data da proclamação da República?', '15 de novembro', '07 de setembro', '22 de janeiro', '12 de outubro')");
                 stmt.executeUpdate("INSERT INTO categories(description, answer, answerwrong1, answerwrong2, answerwrong3) "
-                    + "VALUES('Qual a primeira capital do Brasil?', 'Rio de Janeiro', 'Brasília', 'São Paulo', 'Minas Gerais')");
+                    + "VALUES('Qual a primeira capital do Brasil?', 'Rio de Janeiro', 'Brasília', 'São Paulo', 'Minas Gerais')");   stmt.executeUpdate(SQL);
                 }
             
             //CRIANDO TABELA DE USUARIOS
