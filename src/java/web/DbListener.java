@@ -23,7 +23,7 @@ import javax.servlet.ServletContextListener;
     public static final String jdbcUrl = "jdbc:sqlite:E:\\Fatec\\POO\\WebQuiz\\quiz.db";
     public static String exceptionMessage = null;
   
-    
+   
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         String step = "Starting database creation";
