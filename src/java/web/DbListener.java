@@ -20,7 +20,7 @@ import javax.servlet.ServletContextListener;
  * @author Fernanda
  */
  public class DbListener implements ServletContextListener {
-    private static String jdbcUrl = "jdbc:sqlite:E:\\Fatec\\POO\\WebQuiz\\quiz.db";
+    public static String jdbcUrl = "jdbc:sqlite:C:\\Users\\re039859\\Documents\\workspace-netbeans\\POO-Quiz\\quiz.db";
     public static String exceptionMessage = null;
   
    
