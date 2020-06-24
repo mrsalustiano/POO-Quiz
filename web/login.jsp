@@ -10,7 +10,7 @@
 <%@page import="web.DbListener"%>
 <%@include file="WEB-INF/JSPF/logged.jspf" %>
 <%    if (logged != null) {
-        response.sendRedirect("profile.jsp");
+        response.sendRedirect("home.jsp");
     }
 
 %>

@@ -28,7 +28,7 @@ public class Attempt {
     public static ArrayList<Attempt> getAttempts() throws Exception{
         ArrayList<Attempt> list = new ArrayList<>();
         Class.forName("org.sqlite.JDBC");
-        Connection con = DriverManager.getConnection(DbListener.jdbcUrl);
+        Connection con = DriverManager.getConnection(DbListener.URL);
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT * FROM attempt");
         while(rs.next()){
@@ -46,7 +46,7 @@ public class Attempt {
    
     public static void addAttempts(String name, double result, Date date) throws Exception{
         Class.forName("org.sqlite.JDBC");
-        Connection con = DriverManager.getConnection(DbListener.jdbcUrl);
+        Connection con = DriverManager.getConnection(DbListener.URL);
         String SQL = "INSERT INTO users(name, result) VALUES(?,?)";
         PreparedStatement stmt = con.prepareStatement(SQL);
         stmt.setString(1, name);

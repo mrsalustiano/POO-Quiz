@@ -20,27 +20,26 @@ import web.DbListener;
  */
 public class User {
     
-     public User(String login, String name, String result) {
+        private String login;
+        private String name;
+        private String role;
+        
+    
+     public User(String login, String name) {
         this.login = login;
         this.name = name;
-        this.result = result;
-    }
-    private String login;
-    private String name;
-    private String result;
-    
+    }    
    
     public static ArrayList<User> getUsers() throws Exception{
         ArrayList<User> list = new ArrayList<>();
         Class.forName("org.sqlite.JDBC");
-        Connection con = DriverManager.getConnection(DbListener.jdbcUrl);
+        Connection con = DriverManager.getConnection(DbListener.URL);
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT * FROM users");
         while(rs.next()){
             list.add(new User(
-                    rs.getString("name"),
                     rs.getString("login"),
-                    rs.getString("result")));
+                    rs.getString("name")));                    
         }
         rs.close();
         stmt.close();
@@ -48,10 +47,10 @@ public class User {
         return list;
     }
     
-    public static User getUser(String login, String password) throws Exception{
+       public static User getUser(String login, String password) throws Exception{
         User user = null;
         Class.forName("org.sqlite.JDBC");
-        Connection con = DriverManager.getConnection(DbListener.jdbcUrl);
+        Connection con = DriverManager.getConnection(DbListener.URL);
         String SQL = "SELECT * FROM users WHERE login=? AND password_hash=?";
         PreparedStatement stmt = con.prepareStatement(SQL);
         stmt.setString(1, login);
@@ -60,8 +59,7 @@ public class User {
         if(rs.next()){
             user = new User(
                     rs.getString("name"),
-                    rs.getString("login"),
-                    rs.getString("result"));
+                    rs.getString("login"));
         }else{   
         }
         rs.close();
@@ -70,31 +68,43 @@ public class User {
         return user;
     }
     
-    public static User login(String login, String password) throws Exception {
-        User output = null;
-        Connection con = DriverManager.getConnection(DbListener.jdbcUrl);
-        String SQL = "SELECT * FROM users WHERE login=? AND password_hash=?";
+  public static void addUser(String login, String name, String role, String password) throws Exception{
+        Class.forName("org.sqlite.JDBC");
+        Connection con = DriverManager.getConnection(DbListener.URL);
+        String SQL = "INSERT INTO users(login, name,password_hash) VALUES(?,?,?,?)";
         PreparedStatement stmt = con.prepareStatement(SQL);
         stmt.setString(1, login);
-        stmt.setLong(2, password.hashCode());
-        ResultSet rs = stmt.executeQuery();
-        if(rs.next()){
-            output = new User(
-                    rs.getString("login"), 
-                    rs.getString("password"),
-                    rs.getString("result")
-            );
-        }else{
-            output = null;
-        }
-        rs.close();
+        stmt.setString(2, name);
+        stmt.setString(3, role);
+        stmt.setLong(4, password.hashCode());
+        stmt.execute();
         stmt.close();
         con.close();
-        return output;
-    
-    
-    
     }
+    
+    public static void removeUser(String login) throws Exception{
+        Class.forName("org.sqlite.JDBC");
+        Connection con = DriverManager.getConnection(DbListener.URL);
+        String SQL = "DELETE FROM users WHERE login = ?";
+        PreparedStatement stmt = con.prepareStatement(SQL);
+        stmt.setString(1, login);
+        stmt.execute();
+        stmt.close();
+        con.close();
+    }
+    
+    public static void changePassword(String login, String password) throws Exception{
+        Class.forName("org.sqlite.JDBC");
+        Connection con = DriverManager.getConnection(DbListener.URL);
+        String SQL = "UPDATE users SET password_hash=? WHERE login=?";
+        PreparedStatement stmt = con.prepareStatement(SQL);
+        stmt.setLong(1, password.hashCode());
+        stmt.setString(2, login);
+        stmt.execute();
+        stmt.close();
+        con.close();
+    }
+    
     public String getLogin() {
         return login;
     }
@@ -109,14 +119,6 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getResult() {
-        return result;
-    }
-
-    public void setResult(String result) {
-        this.result = result;
     }
 
 }

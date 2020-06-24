@@ -29,7 +29,7 @@ public class Question {
    public static ArrayList<Question> getQuestions() throws Exception{
         ArrayList<Question> list = new ArrayList<>();
         Class.forName("org.sqlite.JDBC");
-        Connection con = DriverManager.getConnection(DbListener.jdbcUrl);
+        Connection con = DriverManager.getConnection(DbListener.URL);
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT * FROM questions");
         while(rs.next()){
